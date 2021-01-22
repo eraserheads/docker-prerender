@@ -15,6 +15,10 @@ const server = prerender({
   ]
 });
 
+if (process.env.PRERENDER_TOKEN) {
+  prerender.set('prerenderToken', process.env.PRERENDER_TOKEN);
+}
+
 server.use(prerender.sendPrerenderHeader());
 server.use(prerender.blockResources());
 server.use(prerender.removeScriptTags());
